@@ -52,7 +52,7 @@ submitButton.on("click", function(e) {
 
         // if there is input in the text field, load a map showing the result of the user's text
         // include multiple marker's on the map for each location in sidebar
-        // have the map center on the zipcode of the search, but have the map populated with markers    
+        // have the map center on the zipcode of the search, but have the map populated with markers
     } else {
         // on button click run google geocode search
         searchAddress(searchTerm);
@@ -106,6 +106,9 @@ function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(getPositionSuccess, getPositionError, getPositionOptions);
     }
+	else {
+		alertify.error("Geolocation is not supported for this browser.");
+	}
 }
 
 // success function for navigator.geolocator
@@ -163,7 +166,7 @@ function searchAddress(searchTerm) {
                 else {
                         console.log("geocode was not successful.", status);
                     }
-        
+
             });
 
         }
